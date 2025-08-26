@@ -36,15 +36,23 @@ def test_get_user_by_email_db_exception(mock_DAO, controller):
         controller.get_user_by_email("test@test.com")
     assert str(exc_info.value) == "Db error"
 
-def test_get_user_by_email_multiple_users(mock_DAO, controller, capfd):
-    """Valid email multiple users found returns first User object & prints warning"""
+def test_get_user_by_email_multiple_users_returns_first(mock_DAO, controller):
+    """Multiple users found -> returns first user object"""
     mock_DAO.find.return_value = [
         {"user-name": "mikel"},
         {"user-name": "abdi"}
     ]
-
-
     result = controller.get_user_by_email("test@test.com")
-    out, _ = capfd.readouterr()
     assert result == {"user-name": "mikel"}
+
+
+def test_get_user_by_email_multiple_users_prints_warning(mock_DAO, controller, capfd):
+    """Multiple users found -> prints warning message"""
+    mock_DAO.find.return_value = [
+        {"user-name": "mikel"},
+        {"user-name": "abdi"}
+    ]
+    controller.get_user_by_email("test@test.com")
+    out, _ = capfd.readouterr()
     assert "more than one user found with mail test@test.com" in out
+
