@@ -3,18 +3,18 @@ name: Pytester
 on:
     push:
         branches: ["main"]
-        pull_requests:
+        pull_request:
             branches: ["main"]
-            workflow_dispach:
+            workflow_dispatch:
 jobs:
     test:
-        runs_on: ubuntu-latest
+        runs-on: ubuntu-latest
 
         steps:
             - uses: actions/checkout@v3
 
             - name: Set up python
-              uses: actions/setup-checkout@v3
+              uses: actions/setup-python@v3
               with:
                   python-version: "3.12.10"
                   cache: "pip"
