@@ -21,7 +21,7 @@ jobs:
 
             - name: List files in backend directory
               run: |
-              ls -la backend/
+                  ls -la backend/
 
             - name: Install dependencies
               run: |
