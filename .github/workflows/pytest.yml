@@ -27,3 +27,4 @@ jobs:
             - name: run integration tests
               run: |
                   python -m pytest -m integration_test
+              working-directory: ./backend
