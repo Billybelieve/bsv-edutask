@@ -10,7 +10,7 @@ import os
 def dao_instance():
     """Setup test database connection and DAO instance"""
     # Database configuration
-    db_url = os.environ['MONGO_URI']
+    db_url = os.environ.get("MONGO_URL", "mongodb://localhost:27017")
     db_name = "edutask"
     collection_name = "integration_test_users"
 
