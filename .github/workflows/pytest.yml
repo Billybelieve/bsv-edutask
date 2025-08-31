@@ -1,4 +1,4 @@
-name: Pyteste
+name: Pytester
 
 on:
     push:
