@@ -94,10 +94,7 @@ def test_create_user_invalid_data_types(dao_instance):
 def test_create_user_invalid_email(dao_instance):
     """Test create method with invalid email format"""
     from src.controllers.usercontroller import UserController
-    
-    # Create a UserController with the test DAO
     user_controller = UserController(dao_instance)
     
-    # Test that invalid email raises ValueError when calling get_user_by_email
     with pytest.raises(ValueError):
         user_controller.get_user_by_email("test()test,se")
