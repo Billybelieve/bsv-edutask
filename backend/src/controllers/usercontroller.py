@@ -36,11 +36,11 @@ class UserController(Controller):
                 print(f'Error: more than one user found with mail {email}')
                 return users[0]
         except Exception as e:
-            raise ValueError("Error. more than one user")
+            raise
 
     def update(self, id, data):
         try:
             update_result = super().update(id=id, data={'$set': data})
             return update_result
         except Exception as e:
-            raise ValueError('Error: update result failed')
+            raise
