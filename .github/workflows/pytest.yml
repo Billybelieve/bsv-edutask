@@ -11,18 +11,6 @@ jobs:
     test:
         runs-on: ubuntu-latest
 
-        services:
-            mongo:
-                image: mongo:6.0
-                ports:
-                    - 27017:27017
-                options: >-
-                    --health-cmd="mongosh --eval 'db.adminCommand({ ping: 1 })' >/dev/null 2>&1 || exit 1"
-                    --health-interval=10s --health-timeout=5s --health-retries=5
-
-        env:
-            MONGO_URI: mongodb://localhost:27017
-
         steps:
             - uses: actions/checkout@v3
 
