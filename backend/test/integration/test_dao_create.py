@@ -4,12 +4,13 @@ from pymongo.errors import WriteError, DuplicateKeyError
 from src.util.dao import DAO
 from src.util.validators import getValidator
 
+import os
 
 @pytest.fixture(scope="function")
 def dao_instance():
     """Setup test database connection and DAO instance"""
     # Database configuration
-    db_url = "mongodb://root:root@edutask-mongodb:27017"
+    db_url = os.environ['MONGO_URI']
     db_name = "edutask"
     collection_name = "integration_test_users"
 
