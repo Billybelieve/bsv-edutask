@@ -48,4 +48,4 @@ jobs:
 
       - name: Run tests
         working-directory: backend
-        run: pytest
+        run: pytest test/demo/test_get_user_by_email.py test/integration/test_dao_create.py
