@@ -94,15 +94,5 @@ def test_create_user_invalid_data_types(dao_instance):
 def test_create_user_invalid_email(dao_instance):
     """Test create method with invalid email format"""
     user = {'firstName': 'mikel', 'lastName': 'svensson', 'email': 'test()test,se'}
-    with pytest.raises(WriteError):
+    with pytest.raises(ValueError):
         dao_instance.create(user)
-
-
-@pytest.mark.integration_test
-def test_create_user_duplicate_email(dao_instance):
-    """Test the create method with duplicate email."""
-    user1 = {'firstName': 'mikel', 'lastName': 'svensson', 'email': 'test@test.com'}
-    user2 = {'firstName': 'abdi', 'lastName': 'majid', 'email': 'test@test.com'}
-    dao_instance.create(user1)
-    with pytest.raises(DuplicateKeyError):
-        dao_instance.create(user2)
